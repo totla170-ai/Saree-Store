@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+:root {
+  --color-ivory: #faf5ec;
+  --color-ivory-deep: #f2e9d8;
+  --color-ink: #241b17;
+  --color-ink-soft: #4a3d36;
+  --color-maroon: #7a1f2b;
+  --color-maroon-deep: #591620;
+  --color-gold: #b8863b;
+  --color-gold-soft: #d9b877;
+  --color-bottle: #1f3d2e;
+  --color-bottle-soft: #2c5540;
+}
+
+@theme inline {
+  --color-ivory: var(--color-ivory);
+  --color-ivory-deep: var(--color-ivory-deep);
+  --color-ink: var(--color-ink);
+  --color-ink-soft: var(--color-ink-soft);
+  --color-maroon: var(--color-maroon);
+  --color-maroon-deep: var(--color-maroon-deep);
+  --color-gold: var(--color-gold);
+  --color-gold-soft: var(--color-gold-soft);
+  --color-bottle: var(--color-bottle);
+  --color-bottle-soft: var(--color-bottle-soft);
+  --font-display: var(--font-cormorant);
+  --font-body: var(--font-manrope);
+}
+
+body {
+  background: var(--color-ivory);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}
+
+/* Zari border motif — a thin repeating diamond rule, echoing a saree's woven
+   contrast border. Used sparingly as this site's one signature device. */
+.zari-rule {
+  height: 6px;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--color-gold) 0px,
+    var(--color-gold) 2px,
+    transparent 2px,
+    transparent 8px
+  );
+  opacity: 0.55;
+}
+
+.zari-frame {
+  position: relative;
+}
+.zari-frame::after {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1px solid var(--color-gold-soft);
+  opacity: 0;
+  transition: opacity 0.25s ease, inset 0.25s ease;
+  pointer-events: none;
+}
+.zari-frame:hover::after {
+  opacity: 1;
+  inset: 6px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+::selection {
+  background: var(--color-gold-soft);
+  color: var(--color-ink);
+}
